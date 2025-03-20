@@ -19,6 +19,7 @@ Kubernetes is comprised of many smaller components:
 - **kube-apiserver**: The front end for the Kubernetes control plane.
 
 - **kube-scheduler**: Schedules pods onto the appropriate nodes based on resource availability and other constraints.
+    >A pod is a smallest deployable unit, representing a group of one or more containers, with shared storage and network resources, and a specification for how run containers
 
 - **kube-controller-manager**: Runs controller processes. Each controller is a separate process that manages routine tasks such as maintaining the desired state of resources, managing replication, handling node operations, etc...
 
@@ -29,3 +30,16 @@ Kubernetes is comprised of many smaller components:
 - **kube-proxy**: This network proxy runs on each node and maintains network rules to allow communication to and from pods.
 
 - ![k8s-architecture](readme-assets/k8s-architecture.jpg)
+
+## Kubernetes Standard Interfaces 
+Interfaces:
+- Container Runtime Interface (CRI)
+- Container Network Interface (CNI) 
+- Container Storage Interface (CSI)
+
+Defining these interface allows for a modular system where innovation can happen outside of the main Kubernetes project and be easily "plugged in" or swapped to achieve new functionality
+
+### CRI
+Docker's Runtime Interface has some issue, kubernetes used `dockerhim` as a intermiary to interact with docker CRI,
+later it was replaced with `CRI-Contaiend`
+![k8s-architecture](readme-assets/CRI.png)
